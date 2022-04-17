@@ -9,6 +9,5 @@ En el archivo pokemon.js se encontrara el codigo, donde se realiza una busqueda 
 
 # El segundo:
 
-Con el codigo en el archivo pokeimagen.js se buscara la imagen del pokemon seleccionado, haciendo webscraping.
-
+Con el codigo en el archivo pokeimagen.js se encontrara el codigo, donde se realiza una busqueda en por medio de la API indicada, regresando la imagen del pokemon seleccionado.
 
