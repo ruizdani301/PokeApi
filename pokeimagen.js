@@ -16,7 +16,12 @@ request(url, (error, results, body) => {
     while (process.argv[2] !== data[i].name) {
       if (i < data.length - 1) {
         i++;
-      } else { console.log('NO es un pokemon'); }
+      }
+      else
+      {
+        console.log('NO es un pokemon');
+        return;
+      }
     }
 
     urlDos = data[i].url;
@@ -27,8 +32,13 @@ request(url, (error, results, body) => {
       } else {
         const dataDos = JSON.parse(body);
         const img = dataDos.sprites.back_default;
+        try {
         request(img).pipe(fs.createWriteStream(process.argv[2].concat(".", "png")))
-       /*console.log(img);*/
+        console.log("imagen descargada");
+        }
+        catch {
+            console.log("falla en la ruta de la imagen");
+        }
       }
     });
   }
