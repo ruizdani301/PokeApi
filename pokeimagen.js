@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const url = 'https://pokeapi.co/api/v2/pokemon?limit=100';
 
-request(url, function (error, results, body) {
+request(url, (error, results, body) => {
   if (error) {
     console.log(error);
   } else {
@@ -20,25 +20,16 @@ request(url, function (error, results, body) {
     }
 
     urlDos = data[i].url;
-    /* let urlDos = "https://pokeapi.co/api/v2/pokemon-form/3/"; */
-    request(urlDos, function (error, results, body) {
+
+    request(urlDos, (error, results, body) => {
       if (error) {
         console.log(error);
       } else {
         const dataDos = JSON.parse(body);
-        /* console.log(dataDos); */
         const img = dataDos.sprites.back_default;
-       /* fs.writeFile(imagenes, img, function (error) {
-          if (error) {
-            console.log(error);
-          }
-        });*/console.log(img);
+        request(img).pipe(fs.createWriteStream(process.argv[2].concat(".", "png")))
+       /*console.log(img);*/
       }
     });
   }
 });
-/* console.log(data); */
-/* for(let i = 0; i < data.length -1; i++){
-      nombres.push(data[i].url);
-    } */
-/* console.log(nombres); */
